@@ -9,6 +9,14 @@
 
   <ItemGroup>
     <PackageReference Include="HtmlAgilityPack" Version="1.6.13" />
+    <PackageReference Include="Microsoft.Configuration.ConfigurationBuilders.Json" Version="3.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="10.0.7" />
+    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="10.0.7" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Include="appSettingsDevelopment.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
 </Project>
