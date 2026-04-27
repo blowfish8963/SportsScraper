@@ -4,7 +4,7 @@ namespace SportsScraper;
 
 public class Scraper()
 {
-    public static void Scrape(HtmlDocument doc)
+    public static string Scrape(HtmlDocument doc)
     {
         var title = doc.DocumentNode.SelectNodes("//div/h1").First().InnerText;
         var teams = doc.DocumentNode.Descendants("table")
@@ -13,6 +13,7 @@ public class Scraper()
 
         Console.WriteLine(title+"\n");
         int count = 1;
+        string response = title+"\n";
         foreach (var team in teams)
         {
             string? winnerName = string.Empty;
@@ -38,7 +39,10 @@ public class Scraper()
             Console.WriteLine($"Game {count}");  
             Console.WriteLine($"Winner: {winnerName}\t{winnerScore}");
             Console.WriteLine($"Loser: {loserName}\t{loserScore}\n");
+            
+            response += $"Game {count}\nWinner: {winnerName}\t{winnerScore}\nLoser: {loserName}\t{loserScore}\n\n";
             count++;
         }
+        return response;
     }
 }
