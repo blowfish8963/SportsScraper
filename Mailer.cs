@@ -18,13 +18,14 @@ public class Mailer()
 
         var mail = new MailMessage();
         mail.From = new MailAddress(sender);
+        mail.To.Add(recipient);
         mail.Subject = subject;
         mail.Body = body;
         mail.IsBodyHtml = true;
 
         var client = new SmtpClient(smtpServer, port);
         client.Credentials = new NetworkCredential(sender, password);
-        client.EnableSsl = true;
+        client.EnableSsl = false;
         client.Send(mail);
     }
 }

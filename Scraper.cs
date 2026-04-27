@@ -11,9 +11,8 @@ public class Scraper()
         .Where(x => x.GetAttributeValue("class", "")
         .Contains("teams")).ToList();
 
-        Console.WriteLine(title+"\n");
         int count = 1;
-        string response = title+"\n";
+        string response = title+"<br>";
         foreach (var team in teams)
         {
             string? winnerName = string.Empty;
@@ -36,11 +35,7 @@ public class Scraper()
                     loserScore = r.Descendants("td").Skip(1).FirstOrDefault()?.InnerText.Trim();
                 }
             }
-            Console.WriteLine($"Game {count}");  
-            Console.WriteLine($"Winner: {winnerName}\t{winnerScore}");
-            Console.WriteLine($"Loser: {loserName}\t{loserScore}\n");
-            
-            response += $"Game {count}\nWinner: {winnerName}\t{winnerScore}\nLoser: {loserName}\t{loserScore}\n\n";
+            response += $"Game {count}<br>Winner: {winnerName}\t{winnerScore}<br>Loser: {loserName}\t{loserScore}<br><br>";
             count++;
         }
         return response;
